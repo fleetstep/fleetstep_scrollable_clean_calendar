@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
     onAfterMaxDateTapped: (date) {},
     weekdayStart: DateTime.monday,
     // initialFocusDate: DateTime(2023, 5),
-    initialDateSelected: DateTime.now().subtract(Duration(days: 15)),
-    endDateSelected: DateTime.now().add(Duration(days: 15)),
+    // initialDateSelected: DateTime.now().subtract(Duration(days: 15)),
+    // endDateSelected: DateTime.now().add(Duration(days: 15)),
     setEndOnly: true,
   );
 

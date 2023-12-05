@@ -117,7 +117,6 @@ class CleanCalendarController extends ChangeNotifier {
   }
 
   void onDayClick(DateTime date, {bool update = true}) {
-    log(initialDateSelected!.toString());
     if (rangeMode) {
       if (setEndOnly && initialDateSelected != null) {
         rangeMinDate = initialDateSelected;

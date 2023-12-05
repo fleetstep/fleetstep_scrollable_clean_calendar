@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:scrollable_clean_calendar/controllers/clean_calendar_controller.dart';
-import 'package:scrollable_clean_calendar/models/day_values_model.dart';
-import 'package:scrollable_clean_calendar/utils/enums.dart';
-import 'package:scrollable_clean_calendar/utils/extensions.dart';
+import 'package:fleetstep_scrollable_clean_calendar/controllers/clean_calendar_controller.dart';
+import 'package:fleetstep_scrollable_clean_calendar/models/day_values_model.dart';
+import 'package:fleetstep_scrollable_clean_calendar/utils/enums.dart';
+import 'package:fleetstep_scrollable_clean_calendar/utils/extensions.dart';
 
 class DaysWidget extends StatelessWidget {
   final CleanCalendarController cleanCalendarController;

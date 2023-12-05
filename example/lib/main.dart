@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:scrollable_clean_calendar/controllers/clean_calendar_controller.dart';
-import 'package:scrollable_clean_calendar/scrollable_clean_calendar.dart';
-import 'package:scrollable_clean_calendar/utils/enums.dart';
+import 'package:fleetstep_scrollable_clean_calendar/controllers/clean_calendar_controller.dart';
+import 'package:fleetstep_scrollable_clean_calendar/scrollable_clean_calendar.dart';
+import 'package:fleetstep_scrollable_clean_calendar/utils/enums.dart';
 
 void main() {
   runApp(MyApp());

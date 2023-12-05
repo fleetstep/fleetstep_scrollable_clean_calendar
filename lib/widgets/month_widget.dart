@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:scrollable_clean_calendar/utils/enums.dart';
-import 'package:scrollable_clean_calendar/utils/extensions.dart';
+import 'package:fleetstep_scrollable_clean_calendar/utils/enums.dart';
+import 'package:fleetstep_scrollable_clean_calendar/utils/extensions.dart';
 
 class MonthWidget extends StatelessWidget {
   final DateTime month;

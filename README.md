@@ -19,7 +19,7 @@ If you for any reason need the same extended functionalities you should include 
 dependencies:
   my_flutter_package:
     git:
-      url: git@github.com:your_private_path/my_flutter_package.git
+      url: https://github.com/fleetstep/fleetstep_scrollable_clean_calendar
       ref: master
 ```
 and then just 

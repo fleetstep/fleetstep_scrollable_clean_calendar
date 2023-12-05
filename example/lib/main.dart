@@ -18,14 +18,15 @@ class MyApp extends StatelessWidget {
     onAfterMaxDateTapped: (date) {},
     weekdayStart: DateTime.monday,
     // initialFocusDate: DateTime(2023, 5),
-    // initialDateSelected: DateTime(2022, 3, 15),
-    // endDateSelected: DateTime(2022, 3, 20),
+    initialDateSelected: DateTime.now().subtract(Duration(days: 15)),
+    endDateSelected: DateTime.now().add(Duration(days: 15)),
+    setEndOnly: true,
   );
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Scrollable Clean Calendar',
+      title: 'Fleetstep Scrollable Clean Calendar',
       theme: ThemeData(
         colorScheme: const ColorScheme(
           primary: Color(0xFF3F51B5),
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Scrollable Clean Calendar'),
+          title: const Text('Fleetstep Scrollable Clean Calendar'),
           actions: [
             IconButton(
               onPressed: () {
@@ -65,6 +66,8 @@ class MyApp extends StatelessWidget {
           calendarController: calendarController,
           layout: Layout.BEAUTY,
           calendarCrossAxisSpacing: 0,
+          // daySelectedDisabledBackgroundColor: Colors.red,
+          // daySelectedDisabledBackgroundColorBetween: Colors.amber,
         ),
       ),
     );

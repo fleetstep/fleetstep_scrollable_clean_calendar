@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:scrollable_clean_calendar/utils/extensions.dart';
@@ -46,6 +48,8 @@ class CleanCalendarController extends ChangeNotifier {
   /// The item scroll controller
   final ItemScrollController itemScrollController = ItemScrollController();
 
+  final bool setEndOnly;
+
   CleanCalendarController({
     required this.minDate,
     required this.maxDate,
@@ -58,30 +62,33 @@ class CleanCalendarController extends ChangeNotifier {
     this.onAfterMaxDateTapped,
     this.onPreviousMinDateTapped,
     this.weekdayStart = DateTime.monday,
+    this.setEndOnly = false,
     this.initialFocusDate,
   })  : assert(weekdayStart <= DateTime.sunday),
         assert(weekdayStart >= DateTime.monday) {
     final x = weekdayStart - 1;
     weekdayEnd = x == 0 ? 7 : x;
 
-    DateTime currentDate = DateTime(minDate.year, minDate.month);
+    DateTime currentDate;
+
+    if (this.initialDateSelected != null && (this.initialDateSelected!.isBefore(minDate))) {
+      currentDate = DateTime(initialDateSelected!.year, initialDateSelected!.month);
+    } else {
+      currentDate = DateTime(minDate.year, minDate.month);
+    }
+
     months.add(currentDate);
 
-    while (!(currentDate.year == maxDate.year &&
-        currentDate.month == maxDate.month)) {
+    while (!(currentDate.year == maxDate.year && currentDate.month == maxDate.month)) {
       currentDate = DateTime(currentDate.year, currentDate.month + 1);
       months.add(currentDate);
     }
 
-    if (initialDateSelected != null &&
-        (initialDateSelected!.isAfter(minDate) ||
-            initialDateSelected!.isSameDay(minDate))) {
+    if (initialDateSelected != null) {
       onDayClick(initialDateSelected!, update: false);
     }
 
-    if (endDateSelected != null &&
-        (endDateSelected!.isBefore(maxDate) ||
-            endDateSelected!.isSameDay(maxDate))) {
+    if (endDateSelected != null) {
       onDayClick(endDateSelected!, update: false);
     }
   }
@@ -110,15 +117,21 @@ class CleanCalendarController extends ChangeNotifier {
   }
 
   void onDayClick(DateTime date, {bool update = true}) {
+    log(initialDateSelected!.toString());
     if (rangeMode) {
-      if (rangeMinDate == null || rangeMaxDate != null) {
-        rangeMinDate = date;
-        rangeMaxDate = null;
-      } else if (date.isBefore(rangeMinDate!)) {
-        rangeMaxDate = rangeMinDate;
-        rangeMinDate = date;
-      } else if (date.isAfter(rangeMinDate!) || date.isSameDay(rangeMinDate!)) {
+      if (setEndOnly && initialDateSelected != null) {
+        rangeMinDate = initialDateSelected;
         rangeMaxDate = date;
+      } else {
+        if (rangeMinDate == null || rangeMaxDate != null) {
+          rangeMinDate = date;
+          rangeMaxDate = null;
+        } else if (date.isBefore(rangeMinDate!)) {
+          rangeMaxDate = rangeMinDate;
+          rangeMinDate = date;
+        } else if (date.isAfter(rangeMinDate!) || date.isSameDay(rangeMinDate!)) {
+          rangeMaxDate = date;
+        }
       }
     } else {
       rangeMinDate = date;
@@ -179,14 +192,8 @@ class CleanCalendarController extends ChangeNotifier {
         (date.year < maxDate.year || date.month <= maxDate.month))) {
       return;
     }
-    final month =
-        ((date.year - minDate.year) * 12) - minDate.month + date.month;
-    await itemScrollController.scrollTo(
-        index: month,
-        alignment: alignment,
-        duration: duration,
-        curve: curve,
-        opacityAnimationWeights: opacityAnimationWeights);
+    final month = ((date.year - minDate.year) * 12) - minDate.month + date.month;
+    await itemScrollController.scrollTo(index: month, alignment: alignment, duration: duration, curve: curve, opacityAnimationWeights: opacityAnimationWeights);
   }
 
   /// Jump to [date.month].
@@ -214,8 +221,7 @@ class CleanCalendarController extends ChangeNotifier {
         (date.year < maxDate.year || date.month <= maxDate.month))) {
       return;
     }
-    final month =
-        ((date.year - minDate.year) * 12) - minDate.month + date.month;
+    final month = ((date.year - minDate.year) * 12) - minDate.month + date.month;
     itemScrollController.jumpTo(index: month, alignment: alignment);
   }
 }

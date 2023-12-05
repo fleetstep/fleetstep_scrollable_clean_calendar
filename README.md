@@ -17,7 +17,7 @@ If you for any reason need the same extended functionalities you should include 
 
 ```yaml
 dependencies:
-  my_flutter_package:
+  fleetstep_scrollable_clean_calendar:
     git:
       url: https://github.com/fleetstep/fleetstep_scrollable_clean_calendar
       ref: master

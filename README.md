@@ -37,7 +37,6 @@ please refer to  [scrollable clean calendar parameters](https://github.com/Fabio
 
 | Parameter| Type | Default | Description|
 | :-------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  
 | daySelectedDisabledBackgroundColor |Color? | null | A color representing the background of initally selected start date that is in the past and therefore disabled.|
 | daySelectedDisabledBackgroundColorBetween | Color? | null| A color representing the background of initally selected range dates that are in the past and therefore disabled.|
 

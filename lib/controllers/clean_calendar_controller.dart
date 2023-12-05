@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:scrollable_clean_calendar/utils/extensions.dart';
+import 'package:fleetstep_scrollable_clean_calendar/utils/extensions.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class CleanCalendarController extends ChangeNotifier {
@@ -193,7 +193,12 @@ class CleanCalendarController extends ChangeNotifier {
       return;
     }
     final month = ((date.year - minDate.year) * 12) - minDate.month + date.month;
-    await itemScrollController.scrollTo(index: month, alignment: alignment, duration: duration, curve: curve, opacityAnimationWeights: opacityAnimationWeights);
+    await itemScrollController.scrollTo(
+        index: month,
+        alignment: alignment,
+        duration: duration,
+        curve: curve,
+        opacityAnimationWeights: opacityAnimationWeights);
   }
 
   /// Jump to [date.month].

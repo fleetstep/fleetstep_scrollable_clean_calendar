@@ -230,7 +230,7 @@ class DaysWidget extends StatelessWidget {
 
     if (values.isSelected) {
       // log(values.day.toString());
-
+      borderRadius = BorderRadius.zero;
       if (values.isFirstDayOfWeek) {
         borderRadius = BorderRadius.only(
           topLeft: Radius.circular(radius),
@@ -292,6 +292,7 @@ class DaysWidget extends StatelessWidget {
           );
         }
       } else {
+        borderRadius = BorderRadius.zero;
         bgColor = selectedBackgroundColorBetween ?? Theme.of(context).colorScheme.primary.withOpacity(.3);
         txtStyle = (textStyle ?? Theme.of(context).textTheme.bodyLarge)!.copyWith(
           color: selectedBackgroundColor ?? Theme.of(context).colorScheme.primary,

@@ -257,7 +257,7 @@ class DaysWidget extends StatelessWidget {
           fontWeight: FontWeight.bold,
         );
 
-        if ((values.day.isBefore(values.minDate))) {
+        if (values.day.isBefore(values.minDate) && !values.day.isSameDay(cleanCalendarController.minDate)) {
           log('bruh');
           bgColor = selectedDisabledBackgroundColor ?? Theme.of(context).colorScheme.primary.withOpacity(0.2);
           txtStyle = (textStyle ?? Theme.of(context).textTheme.bodyLarge)!.copyWith(

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:fleetstep_scrollable_clean_calendar/controllers/clean_calendar_controller.dart';
 import 'package:fleetstep_scrollable_clean_calendar/models/day_values_model.dart';
@@ -258,7 +256,6 @@ class DaysWidget extends StatelessWidget {
         );
 
         if (values.day.isBefore(values.minDate) && !values.day.isSameDay(cleanCalendarController.minDate)) {
-          log('bruh');
           bgColor = selectedDisabledBackgroundColor ?? Theme.of(context).colorScheme.primary.withOpacity(0.2);
           txtStyle = (textStyle ?? Theme.of(context).textTheme.bodyLarge)!.copyWith(
             color: dayDisableColor ?? Theme.of(context).colorScheme.onSurface.withOpacity(.2),
@@ -302,8 +299,6 @@ class DaysWidget extends StatelessWidget {
         );
 
         if ((values.day.isBefore(values.minDate))) {
-          log('bruh');
-
           bgColor = selectedDisabledBackgroundColorBetween ?? Theme.of(context).colorScheme.primary.withOpacity(.075);
           txtStyle = (textStyle ?? Theme.of(context).textTheme.bodyLarge)!.copyWith(
             color: dayDisableColor ?? Theme.of(context).colorScheme.onSurface.withOpacity(.25),
